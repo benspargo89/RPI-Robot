@@ -33,7 +33,7 @@ while(1):
         if l != 0:
             points.append([l, base-i*50])
             cv.arrowedLine(frame, (320,480),(l, base-i*50), (170,255-(i*40),255-(i*40)),thickness=2) 
-            angle = np.rad2deg(np.arctan2((base-i*50) - 480, l - 320))
+            angle = abs(np.rad2deg(np.arctan2((base-i*50) - 480, l - 320))) - 1
             angles.append(angle)
             org = (10, 20*i)
             fontScale = .5
@@ -43,7 +43,8 @@ while(1):
             cv.putText(frame, f'Angle {i}: {round(angle,2)}', org, font, fontScale, color, thickness, cv.LINE_AA)
         else:
             points.append(False)
-            angles.append(False)
+            # angles.append(False)
+            
     cv.imshow('mask',mask)
     cv.imshow('frame', frame) 
     k = cv.waitKey(5) & 0xFF

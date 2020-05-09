@@ -6,6 +6,14 @@ from time import sleep
 right_motor = Motor(forward=params['M2'], backward=params['M1'])
 left_motor = Motor(forward=params['M4'], backward=params['M3'])
 
+def approach(angles):
+    if angles[0] > 5:
+        move('L')
+    if angles[0] < -5:
+        move('R')
+    else:
+        move('F')
+
 def move(direction="F", timed=False, delay=1):
     """
     Primary function to move the robot. Function takes a direction 
