@@ -18,12 +18,17 @@ while(1):
     angles =[]
     for i in range(1,7):
         base = 450
+        ##Get data for a particular row
         j = mask[base - i*50,:]
-        ##Get cumlative row total
+        ##Caclculate cumlative row total
         j = j.cumsum()
         ##Identify the ~median value
+        ## -> the max value is the right edge of the mask
         k = j.max() / 2 / 255
-        ##Find the position of the ~median value
+        ##Find the position of the ~median value 
+        ##-> given the first occurence of the max is the right edge, 
+        ##and the max represent the cumulative total active pixels 
+        ##in the row, we can identify the median pixel
         l = j.argmax() - k.astype(int)
         if l != 0:
             points.append([l, base-i*50])

@@ -7,6 +7,10 @@ right_motor = Motor(forward=params['M2'], backward=params['M1'])
 left_motor = Motor(forward=params['M4'], backward=params['M3'])
 
 def move(direction="F", timed=False, delay=1):
+    """
+    Primary function to move the robot. Function takes a direction 
+    - F, B, R, L - and optionaly a time to move.
+    """
     direction = direction.upper()
     if direction == "F":
         right_motor.forward()
