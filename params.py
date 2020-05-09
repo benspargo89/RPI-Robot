@@ -1,1 +1,1 @@
-params = {'Trigger' : 18, 'Echo' : 21}
+params = {'Trigger':18,'Echo':21,'M1':17,'M2':22,'M3':23,'M4':24}
