@@ -1,0 +1,1 @@
+params = {'Trigger' : 18, 'Echo' : 21}
