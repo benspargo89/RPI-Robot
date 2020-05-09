@@ -1,5 +1,7 @@
 import cv2 as cv
+import sys
 import numpy as np
+
 cap = cv.VideoCapture(0)
 while(1):
     _, frame = cap.read()
@@ -44,7 +46,11 @@ while(1):
         else:
             points.append(False)
             # angles.append(False)
-            
+        if angles:
+            approach(angles)
+        else:
+            print('Lost the line...')
+            sys.exit()
     cv.imshow('mask',mask)
     cv.imshow('frame', frame) 
     k = cv.waitKey(5) & 0xFF
