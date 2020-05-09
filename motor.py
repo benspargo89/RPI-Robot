@@ -3,10 +3,11 @@ from params import params
 from time import sleep
 
 
-right_motor = Motor(forward=params['M2'], backward=params['M3'])
+right_motor = Motor(forward=params['M2'], backward=params['M1'])
 left_motor = Motor(forward=params['M4'], backward=params['M3'])
 
 def move(direction="F", timed=False, delay=1):
+    direction = direction.upper()
     if direction == "F":
         right_motor.forward()
         left_motor.forward() 
