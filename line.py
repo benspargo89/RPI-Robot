@@ -1,6 +1,7 @@
 import cv2 as cv
 import sys
 import numpy as np
+from motor import approach, move
 
 cap = cv.VideoCapture(0)
 while(1):
