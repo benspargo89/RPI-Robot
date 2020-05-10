@@ -4,6 +4,7 @@ import numpy as np
 from motor import approach, move
 
 cap = cv.VideoCapture(0)
+cap.set(cv2.cv.CV_CAP_PROP_FPS, 60)
 while(1):
     _, frame = cap.read()
     hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
@@ -36,7 +37,7 @@ while(1):
         if l != 0:
             points.append([l, base-i*50])
             cv.arrowedLine(frame, (320,480),(l, base-i*50), (170,255-(i*40),255-(i*40)),thickness=2) 
-            angle = abs(np.rad2deg(np.arctan2((base-i*50) - 480, l - 320))) - 1
+            angle = abs(np.rad2deg(np.arctan2((base-i*50) - 480, l - 320))) - 90
             angles.append(angle)
             org = (10, 20*i)
             fontScale = .5
@@ -44,12 +45,16 @@ while(1):
             color = (170, 255-(i*40), 255-(i*40))
             thickness = 2
             cv.putText(frame, f'Angle {i}: {round(angle,2)}', org, font, fontScale, color, thickness, cv.LINE_AA)
-        else:
-            points.append(False)
+        # else:
+            # pass
+            # points.append(False)
             # angles.append(False)
-        if angles:
-            approach(angles)
+        # if angles:
+        #     approach(angles)
+        if points:
+            approach(points[-1])
         else:
+            move(timed=True)
             print('Lost the line...')
             sys.exit()
     cv.imshow('mask',mask)
