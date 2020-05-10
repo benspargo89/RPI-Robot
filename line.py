@@ -4,7 +4,7 @@ import numpy as np
 from motor import approach, move
 
 cap = cv.VideoCapture(0)
-cap.set(cv2.cv.CV_CAP_PROP_FPS, 60)
+cap.set(cv2.cv.CV_CAP_PROP_FPS, 10)
 while(1):
     _, frame = cap.read()
     hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
