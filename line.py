@@ -52,7 +52,7 @@ while(1):
         # if angles:
         #     approach(angles)
         if points:
-            approach(points[-1])
+            approach(points[-1][0])
         else:
             move(timed=True)
             print('Lost the line...')
